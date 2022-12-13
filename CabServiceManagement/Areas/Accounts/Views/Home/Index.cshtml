@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+@inject UserManager<ApplicationUser> userManager
+@inject SignInManager<ApplicationUser> signinManager
+@{
+    ApplicationUser appUser = null;
+    ViewData["Title"] = "Home Page";
+    if (signinManager.IsSignedIn(User))
+        appUser = await userManager.FindByNameAsync(User.Identity.Name);
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-2">✨Hey Taxi</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<h3>Welcome @appUser?.FirstName!</h3>
+

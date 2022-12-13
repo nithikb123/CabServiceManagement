@@ -1,0 +1,49 @@
+﻿@model BookingViewModel
+@{
+    ViewData["Title"] = "Book your trip";
+}
+
+<h1>Booking</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <form method="post">
+                <div>
+                    <label asp-for="From"></label>
+                    <select asp-for="From" asp-items="@Html.GetEnumSelectList<Location>()" class="form-control">
+                        <option>--- Select  your Pick Up ---</option>
+                     </select>
+                    <span asp-validation-for="From" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="To"></label>
+                    <select asp-for="To" asp-items="@Html.GetEnumSelectList<Location>()" class="form-control">
+                        <option>--- Select your Destination ---</option>
+                        </select>
+                    <span asp-validation-for="To" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="Date"></label>
+                    <input asp-for="Date" class="form-control" />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="CarModel"></label>
+                    `<select asp-for="CarModel" asp-items="@Html.GetEnumSelectList<CarModel>()" class="form-control">
+                        <option>--- Select a Car Model ---</option>
+                        </select>
+                    <span asp-validation-for="CarModel" class="text-danger"></span>
+                </div>
+
+                <div class="d-grid mt-4">
+                    <button class="btn btn-success">Book Now</button>
+                </div>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            </form>
+        </div>
+    </div>
+</div>
+

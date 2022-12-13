@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Booking>
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Bookings</h1>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="conatiner">
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.From)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.To)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CarModel)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.From)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.To)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CarModel)
+                    </td>
+                    <td>
+                        <a class="btn btn-success" asp-action="Accept" asp-route-id="@item.Id">Accept</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
